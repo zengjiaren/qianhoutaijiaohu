@@ -70,6 +70,16 @@ $cnpm install express ejs mongoose express-session -S //安装模块
 $node app.js    //运行项目
 ```
 
+![](https://github.com/zengjiaren/qianhoutaijiaohu/blob/master/public/img/%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81.png)  
+![](https://github.com/zengjiaren/qianhoutaijiaohu/blob/master/public/img/%E7%99%BB%E5%BD%95%E6%88%90%E5%8A%9F.png)  
+![](https://github.com/zengjiaren/qianhoutaijiaohu/blob/master/public/img/%E8%87%AA%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93.png)  
+![](https://github.com/zengjiaren/qianhoutaijiaohu/blob/master/public/img/%E8%AF%B7%E6%B1%82API%E6%95%B0%E6%8D%AE.png)  
+![](https://github.com/zengjiaren/qianhoutaijiaohu/blob/master/public/img/%E9%9F%B3%E4%B9%90%E5%8A%9F%E8%83%BD.png)  
+![](https://github.com/zengjiaren/qianhoutaijiaohu/blob/master/public/img/%E9%9F%B3%E4%B9%90%E6%90%9C%E7%B4%A2.png)
+由于API接口失效，所以现在播放不了音乐，也获取不到歌词了，抱歉
+![](https://github.com/zengjiaren/qianhoutaijiaohu/blob/master/public/img/%E9%9F%B3%E4%B9%90%E8%AF%A6%E6%83%85.png)  
+![](https://github.com/zengjiaren/qianhoutaijiaohu/blob/master/public/img/%E6%95%B0%E6%8D%AE%E4%BF%AE%E6%94%B9.png)  
+![](https://github.com/zengjiaren/qianhoutaijiaohu/blob/master/public/img/%E6%8F%90%E4%BE%9BAPI.png)  
 
 
 

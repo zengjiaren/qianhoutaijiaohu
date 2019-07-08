@@ -1,0 +1,52 @@
+<%- include("header.html") %>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>分类列表</h2>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            <a href="/admin/category/add" class="btn btn-success">添加功能</a>
+        </div>
+    </div>
+</div>
+
+<!-- 表格 -->
+<div class="ibox float-e-margins">
+
+    <div class="ibox-content">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>用户名</th>
+                    <th>类型</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% result.forEach(function(item,index){ %>
+                <tr>
+                    <td><%=item._id%></td>
+                    <td><%=item.username%></td>
+                    <td><%=item.isAdmin%></td>
+                    <td>
+                        <a href="/admin/category/edit?_id=<%=item._id%>" type="button" class="btn btn-warning">修改</a>
+                        <a href="/admin/category/del?id=<%=item._id%>" type="button" class="btn btn-danger">删除</a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <!-- 分页功能 -->
+        <div class="btn-group">
+            <% for(var i =0;i < pageCount;i++){%>
+            <a href="/admin/category?page=<%=i%>" class="btn btn-white"><%=i+1%></a>
+            <% } %>
+        </div>
+        <!-- 分页功能end -->
+
+    </div>
+</div>
+
+<%- include("footer.html") %>

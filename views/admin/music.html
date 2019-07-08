@@ -1,0 +1,124 @@
+<%- include("header.html") %>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>分类列表</h2>
+    </div>
+    <form action="/admin/music/find" method="post">
+        <div>
+            <input type="text" name="seek" class="form-control" placeholder="歌曲" />
+            <input type="submit" value="搜索" class="btn btn-primary" style="margin-top: 5px;" />
+        </div>
+    </form>
+</div>
+
+<!-- 表格 -->
+<div class="ibox float-e-margins">
+
+    <div class="ibox-content">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>歌曲</th>
+                    <th>歌手</th>
+                    <th>图片</th>
+                    <th>查看</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% result.forEach(function(item,index){ %>
+                <tr>
+                    <td><%=item.id%></td>
+                    <td><%=item.name%></td>
+                    <td><%=item.singer%></td>
+                    <td>
+                        <img src="<%=item.pic%>" id="tu" style="width: 50px;height:50px">
+                    </td>
+                    <td>
+                        <input type="hidden" name="id" value="<%=item.url%>">
+                        <!-- <audio src="<%=item.url%>" controls="controls" loop="loop"> -->
+                                    <div class="">
+                                        <button type="button" class="btn btn-primary" onclick="update(this)" data-toggle="modal" data-target="#myModal">
+                                            详情
+                                        </button>
+                                    </div>
+                                    
+                    </td>
+                    <td>
+                        <a href="/admin/music/del?id=<%=item._id%>" type="button" class="btn btn-danger">删除</a>
+                    </td>
+                    <td>
+                        <input type="hidden" name="id" value="<%=item.lrc%>">
+                    </td>
+                </tr>
+                <% }) %>
+                <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content animated bounceInRight">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                                        class="sr-only">关闭</span>
+                                </button>
+                                <h4 class="modal-title" id="title"></h4>
+                                <img src="" id="pic" style="width: 100px;height:100px"><br /><br />
+                                <small class="font-bold" id="name"></small><br /><br />
+                                <audio src="" id="url" controls="controls" loop="loop"></audio>
+                            </div><small class="font-bold">
+                                <div class="modal-body">
+                                    <p><h3>歌词链接：</h3></p>
+                                    <a href="" id="lrc">
+                                        <p id="content"></p>
+                                    </a>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                </div>
+                            </small>
+                        </div><small class="font-bold">
+                        </small>
+                    </div><small class="font-bold">
+                    </small>
+                </div>
+            </tbody>
+        </table>
+        <!-- 分页功能 -->
+        <div class="btn-group" style="margin-bottom: 50px">
+            <% for(var i =0;i < pageCount;i++){%>
+            <a href="/admin/music?page=<%=i%>" class="btn btn-white"><%=i+1%></a>
+            <% } %>
+        </div>
+        <!-- 分页功能end -->
+
+    </div>
+</div>
+
+<%- include("footer.html") %>
+
+<script>
+    function update(obj) {/*点击修改按钮，给模态框加载信息并且弹出模态框*/
+        var tds = $(obj).parent().parent().parent().find('td');
+        // console.log(typeof tds);
+        // var tupian = $("#tu");
+        // var tupian = tds[3].childNodes;
+        var tupian = tds[3].children[0].src;
+        // console.log(tds[1].innerHTML);
+        $("#title").text(tds[1].innerHTML);
+        // $("#tu").attr("src")
+
+        // console.log(tupian);
+        $("#pic").attr("src",tupian)
+        
+        $("#name").text(tds[2].innerHTML);
+
+        var url = tds[4].children[0].value;
+        // console.log(url);
+        $("#url").attr("src", url)
+
+        var content = tds[6].children[0].value;
+        // console.log(content);
+        $("#content").text(content);
+        $("#lrc").attr("href", content)
+    }
+</script>

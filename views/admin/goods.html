@@ -1,0 +1,60 @@
+<%- include("header.html") %>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>商品列表</h2>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            <a href="/admin/goods/add" class="btn btn-success">添加功能</a>
+        </div>
+    </div>
+</div>
+
+<!-- 表格 -->
+<div class="ibox float-e-margins">
+
+    <div class="ibox-content">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>缩略图</th>
+                    <th>标题</th>
+                    <th>地址</th>
+                    <th>价格</th>
+                    <th>旧价格</th>
+                    <th>收藏</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% result.forEach(function(item,index){%>
+                <tr>
+                    <td><%=index+1%></td>
+                    <td><img src="<%=item.thumbnail%>" alt="" width="100" height="100"></td>
+                    <td><%=item.title%></td>
+                    <td><%=item.address%></td>
+                    <td><%=item.price%></td>
+                    <td><%=item.oldPrice%></td>
+                    <td><%=item.iscollect?"收藏":"未收藏"%></td>
+                    <td>
+                        <a href="/admin/goods/edit?id=<%=item._id%>" type="button" class="btn btn-warning">修改</a>
+                        <a href="/admin/goods/del?id=<%=item._id%>" type="button" class="btn btn-danger">删除</a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+            <!-- 分页功能 -->
+            <div class="btn-group">
+                <% for(var i =0;i < pageCount;i++){%>
+                <a href="/admin/goods?page=<%=i%>" class="btn btn-white"><%=i+1%></a>
+                <% } %>
+            </div>
+            <!-- 分页功能end -->
+    </div>
+</div>
+
+<!-- 表格 end -->
+<%- include("footer.html") %>
